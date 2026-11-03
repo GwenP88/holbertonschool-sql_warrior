@@ -1,0 +1,1 @@
+SELECT  mangas.titre AS titre, mangakas.prenom AS prenom, mangakas.nom AS nom, mangakas.pays AS pays FROM mangas JOIN mangakas ON mangakas.code_mangaka = mangas.code_mangaka ORDER BY titre;
