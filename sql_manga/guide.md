@@ -1,5 +1,7 @@
 Commande pour éxécuter la requète :
 
+sql < task-1.sql
+
 mysql -u root -p -t tp_manga < mon_fichier.sql
 mysql -u root -p -t tp_manga < task_1.sql
 

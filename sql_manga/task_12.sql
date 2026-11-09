@@ -1,0 +1,1 @@
+SELECT mangas.titre, mangakas.prenom, mangakas.nom, genres_manga.signification FROM mangas JOIN mangakas ON mangas.code_mangaka = mangakas.code_mangaka JOIN genres_manga ON mangas.code_genre = genres_manga.code_genre WHERE genres_manga.signification = 'Horreur';
