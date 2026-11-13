@@ -1,12 +1,19 @@
-DELIMITER / / CREATE FUNCTION vehicule_est_assure (p_id_vehicule INT) RETURNS INT DETERMINISTIC BEGIN DECLARE date_fin DATE;
+DELIMITER // 
+CREATE FUNCTION vehicule_est_assure (p_id_vehicule INT) RETURNS INT NOT DETERMINISTIC
+READS SQL DATA
+BEGIN
+DECLARE assurance_valide BOOL;
 
 SELECT
-    DATE_ADD(date_effet, INTERVAL duree MONTH) INTO date_fin
+  COUNT(contrats.id) INTO assurance_valide
 FROM
-    contrats
+  contrats
 WHERE
-    p_id_contrat = contrats.id;
+  CURDATE() < DATE_ADD(date_effet, INTERVAL duree MONTH)
+  AND date_effet <= CURDATE()
+  AND p_id_vehicule = contrats.vehicule;
 
-RETURN date_fin;
+RETURN assurance_valide >= 1;
 
-END / / DELIMITER;
+END // 
+DELIMITER ;
