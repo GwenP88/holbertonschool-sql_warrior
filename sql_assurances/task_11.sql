@@ -1,4 +1,5 @@
-DELIMITER / / CREATE PROCEDURE ajouter_employe(
+DELIMITER // 
+CREATE PROCEDURE ajouter_employe(
     nom VARCHAR(50),
     prenom VARCHAR(50),
     num_permis VARCHAR(12)
@@ -14,4 +15,5 @@ INSERT INTO
 VALUES
     (max_id + 1, UPPER(nom), prenom, num_permis);
 
-END / / DELIMITER;
+END // 
+DELIMITER ;
